@@ -17,8 +17,8 @@
 ## 常见问题
 
 * [linux tar: z: unknown function modifie 错误](post/linux-tar-z-unknown-function-modifie.md)
-* [ubuntu: docker break ufw's rules](post/ubuntu-docker-break-ufw-rules.md)
-
+* [ubuntu: docker break ufw's rules之容器端口由ufw管理](post/ubuntu-docker-break-ufw-rules.md)
+* [ubuntu: docker break ufw's rules之容器连不上外网](post/ubuntu-docker-break-ufw-rules-state-2.md)
 
 
 
