@@ -4,6 +4,9 @@ ufw 阻止了从docker容器到外部的网络连接
 
 对我来说这是一个非常标准的设置，我有一台运行docker和ufw的ubuntu机器作为我的防火墙。 如果启用防火墙，则docker实例无法连接到外部
 
+https://blog.36web.rocks/2016/07/08/docker-behind-ufw.html
+https://oomake.com/question/4955599
+
 ## env ##
 
 当运行docker后
