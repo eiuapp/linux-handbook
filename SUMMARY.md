@@ -12,7 +12,9 @@
 
 ## install
 
+## ubuntu
 
+* [系统对文件监控的数量到达限制数量](post/ubuntu/ubuntu-limit-for-number-of-file-watchers-reached.md)
 
 ## 常见问题
 
@@ -21,5 +23,7 @@
 * [ubuntu: docker break ufw's rules之容器连不上外网](post/ubuntu-docker-break-ufw-rules-state-2.md)
 * [解决SSH远程执行命令找不到环境变量的问题](post/ssh-command-env-not-found-command.md)
 * [Linux自动挂载（配置/etc/fatab）](post/linux-mount-use-etc-fstab.md)
+
+
 
 
