@@ -29,3 +29,7 @@ sudo sysctl -p
 ```
 
 然后就解决了！
+
+## ref
+
+- https://blog.csdn.net/weixin_43760383/article/details/84326032
