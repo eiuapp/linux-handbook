@@ -15,6 +15,7 @@
 ## ubuntu
 
 * [系统对文件监控的数量到达限制数量](post/ubuntu/ubuntu-limit-for-number-of-file-watchers-reached.md)
+* [Ubuntu 下如何查看已安装的软件](post/ubuntu/dpkg.md)
 
 ## mount
 
