@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url> <loc>https://eiuapp.github.io/linux-handbook/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/linux-handbook/post/ubuntu/ubuntu-limit-for-number-of-file-watchers-reached.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/linux-handbook/post/ubuntu/dpkg.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/linux-handbook/post/mount/linux-mkfs-mount.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/linux-handbook/post/mount/linux-mount-use-etc-fstab.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/linux-handbook/post/linux-tar-z-unknown-function-modifie.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/linux-handbook/post/ubuntu-docker-break-ufw-rules-state-2.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://eiuapp.github.io/linux-handbook/post/ssh-command-env-not-found-command.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+</urlset>

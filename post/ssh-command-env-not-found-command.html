@@ -1,0 +1,511 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>解决SSH远程执行命令找不到环境变量的问题 · Linux Handbook - Linux 实践指南 by eiuapp</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="eiuapp">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-ghcolors.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-lightbox/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="ubuntu-docker-break-ufw-rules-state-2.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"eiuapp/linux-handbook","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://eiuapp.github.io/linux-handbook" target="_blank" class="custom-link">Linux Handbook</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">序言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">环境配置</li>
+        
+        
+    
+
+    
+        
+        <li class="header">env</li>
+        
+        
+    
+
+    
+        
+        <li class="header">install</li>
+        
+        
+    
+
+    
+        
+        <li class="header">ubuntu</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="ubuntu/ubuntu-limit-for-number-of-file-watchers-reached.html">
+            
+                <a href="ubuntu/ubuntu-limit-for-number-of-file-watchers-reached.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    系统对文件监控的数量到达限制数量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="ubuntu/dpkg.html">
+            
+                <a href="ubuntu/dpkg.html">
+            
+                    
+                        <b>5.2.</b>
+                    
+                    Ubuntu 下如何查看已安装的软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">mount</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="mount/linux-mkfs-mount.html">
+            
+                <a href="mount/linux-mkfs-mount.html">
+            
+                    
+                        <b>6.1.</b>
+                    
+                    格式化并挂载硬盘
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="mount/linux-mount-use-etc-fstab.html">
+            
+                <a href="mount/linux-mount-use-etc-fstab.html">
+            
+                    
+                        <b>6.2.</b>
+                    
+                    Linux自动挂载（配置/etc/fatab）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">常见问题</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="linux-tar-z-unknown-function-modifie.html">
+            
+                <a href="linux-tar-z-unknown-function-modifie.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    linux tar: z: unknown function modifie 错误
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="ubuntu-docker-break-ufw-rules.md">
+            
+                <span>
+            
+                    
+                        <b>7.2.</b>
+                    
+                    ubuntu: docker break ufw's rules之容器端口由ufw管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="ubuntu-docker-break-ufw-rules-state-2.html">
+            
+                <a href="ubuntu-docker-break-ufw-rules-state-2.html">
+            
+                    
+                        <b>7.3.</b>
+                    
+                    ubuntu: docker break ufw's rules之容器连不上外网
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="7.4" data-path="ssh-command-env-not-found-command.html">
+            
+                <a href="ssh-command-env-not-found-command.html">
+            
+                    
+                        <b>7.4.</b>
+                    
+                    解决SSH远程执行命令找不到环境变量的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >解决SSH远程执行命令找不到环境变量的问题</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <html><head></head><body><p>&#x89E3;&#x51B3;SSH&#x8FDC;&#x7A0B;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x627E;&#x4E0D;&#x5230;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x7684;&#x95EE;&#x9898;</p>
+<h2 id="env">env</h2>
+<ul>
+<li>ssh <h2 id="&#x539F;&#x7406;">&#x539F;&#x7406;</h2>
+</li>
+</ul>
+<p><a href="https://blog.csdn.net/whitehack/article/details/51705889" target="_blank">https://blog.csdn.net/whitehack/article/details/51705889</a> (&#x8FD9;&#x4E2A;&#x5199;&#x5F97;&#x6700;&#x597D;)
+<a href="https://www.jianshu.com/p/77ebeb27a2dc" target="_blank">https://www.jianshu.com/p/77ebeb27a2dc</a> (&#x7B80;&#x5355;)
+<a href="https://www.cnblogs.com/zhenyuyaodidiao/p/9287497.html" target="_blank">https://www.cnblogs.com/zhenyuyaodidiao/p/9287497.html</a></p>
+<h2 id="&#x5B9E;&#x8DF5;">&#x5B9E;&#x8DF5;</h2>
+<p>&#x5728; ssh &#x670D;&#x52A1;&#x7AEF; &#x627E;&#x5230; <code># If not running interactively, don&apos;t do anything</code> , (&#x5728;&#x8FD9;&#x4E00;&#x884C;&#x4E0B;&#x9762;,&#x4E00;&#x822C;&#x4F1A;&#x6709;&#x4E00;&#x53E5;<code>return</code>&#x4E4B;&#x7C7B;&#x7684;), &#x5728;&#x8FD9;&#x4E00;&#x884C;&#x4E0B;&#x9762;, &#x52A0;&#x5165;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;.
+&#x4F46;&#x662F;, &#x4E5F;&#x4E0D;&#x80FD;&#x52A0;&#x591A;&#x4E86;, &#x52A0;&#x591A;&#x4E86;, scp &#x4F1A;&#x5931;&#x6548;.</p>
+<p>&#x5982;&#x4E0B;&#x9762;,&#x5C31;&#x662F;&#x52A0;&#x591A;&#x4E86;, &#x5982;&#x679C;&#x62A5;&#x9519;, &#x5219;&#x5BFC;&#x81F4; &#x8FDC;&#x7A0B;scp&#x4E0D;&#x4E86;&#x6587;&#x4EF6;.</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">vi</span> /home/lcnx/.bashrc
+<span class="token comment"># If not running interactively, don&apos;t do anything</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">NVM_DIR</span><span class="token operator">=</span><span class="token string">&quot;<span class="token environment constant">$HOME</span>/.nvm&quot;</span>
+<span class="token punctuation">[</span> -s <span class="token string">&quot;<span class="token variable">$NVM_DIR</span>/nvm.sh&quot;</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>. <span class="token string">&quot;<span class="token variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="token comment"># This loads nvm</span>
+<span class="token punctuation">[</span> -s <span class="token string">&quot;<span class="token variable">$NVM_DIR</span>/bash_completion&quot;</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>. <span class="token string">&quot;<span class="token variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="token comment"># This loads nvm bash_completion</span>
+nvm use v11.14.0
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/home/lcnx/.nvm/versions/node/v11.14.0/bin
+<span class="token punctuation">[</span> -z <span class="token string">&quot;<span class="token environment constant">$PS1</span>&quot;</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">return</span>
+</code></pre>
+<p>&#x5E94;&#x8BE5;&#x4FEE;&#x6539;&#x6210;</p>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">vi</span> /home/lcnx/.bashrc
+<span class="token comment"># If not running interactively, don&apos;t do anything</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/home/lcnx/.nvm/versions/node/v11.14.0/bin
+<span class="token punctuation">[</span> -z <span class="token string">&quot;<span class="token environment constant">$PS1</span>&quot;</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">return</span>
+</code></pre>
+<h2 id="ssh-&#x5BA2;&#x6237;&#x7AEF;-&#x67E5;&#x770B;&#x6240;&#x4F7F;&#x7528;&#x7684;-ssh&#x670D;&#x52A1;&#x7AEF;&#x73AF;&#x5883;">ssh &#x5BA2;&#x6237;&#x7AEF; &#x67E5;&#x770B;&#x6240;&#x4F7F;&#x7528;&#x7684; ssh&#x670D;&#x52A1;&#x7AEF;&#x73AF;&#x5883;</h2>
+<pre class="language-"><code>ssh lcnx@120.77.39.189 &quot;. /home/lcnx/.bashrc; env&quot;
+ssh lcnx@120.77.39.189 &quot;env&quot;
+</code></pre><p>&#x4F46;&#x662F;&#x4E0B;&#x9762;&#x7684; %HOME &#x53D6;&#x7684;&#x662F; ssh &#x5BA2;&#x6237;&#x7AEF; &#x7684;&#x7528;&#x6237;,&#x6240;&#x4EE5;&#x65E0;&#x6548;.</p>
+<pre class="language-"><code>ssh lcnx@120.77.39.189 &quot;. $HOME/.bashrc; env&quot;
+</code></pre><footer class="page-footer"><span class="copyright"><p><a href="https://github.com/eiuapp/linux-handbook" target="_blank">Linux&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a> | <a href="https://github.com/eiuapp/linux-handbook" target="_blank">Linux&#x5B9E;&#x8DF5;&#x6307;&#x5357;</a></p><p><a href="https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg" data-lightbox="2fd927ee-fa64-4eca-8ed5-6bd72b573a3c" target="_blank">&#x70B9;&#x51FB;&#x5173;&#x6CE8;&#x3010;servicemesher&#x3011;&#x516C;&#x4F17;&#x53F7;&#x56DE;&#x590D;&#x3010;&#x52A0;&#x7FA4;&#x3011;&#x52A0;&#x5165;&#x5B66;&#x4E60;&#x7FA4;</a> | </p>Copyright &#xA9; <a href="https://eiuapp.github.io" target="_blank">eiuapp.github.io</a> 2017-2019 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification"> Updated at 
+2019-09-06 05:46:26
+</span></footer></body></html>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ubuntu-docker-break-ufw-rules-state-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: ubuntu: docker break ufw's rules之容器连不上外网">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"解决SSH远程执行命令找不到环境变量的问题","level":"7.4","depth":1,"previous":{"title":"ubuntu: docker break ufw's rules之容器连不上外网","level":"7.3","depth":1,"path":"post/ubuntu-docker-break-ufw-rules-state-2.md","ref":"post/ubuntu-docker-break-ufw-rules-state-2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","lightbox","adsense","ga"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"<p><a href=https://github.com/eiuapp/linux-handbook>Linux实践指南</a> | <a href=https://github.com/eiuapp/linux-handbook>Linux实践指南</a></p><p><a href=https://res.cloudinary.com/dmtixvmgt/image/upload/v1539022273/wechat-qrcode_cml5dm.jpg data-lightbox=2fd927ee-fa64-4eca-8ed5-6bd72b573a3c>点击关注【servicemesher】公众号回复【加群】加入学习群</a> | </p>Copyright © <a href=https://eiuapp.github.io>eiuapp.github.io</a> 2017-2019","modify_label":" Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"lang":{"shell":"bash"},"css":["prism-themes/themes/prism-ghcolors.css"]},"github":{"url":"https://github.com/eiuapp/linux-handbook"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/eiuapp/linux-handbook/blob/master/"},"splitter":{},"adsense":{"client":"ca-pub-4029167986768912","slot":"2445941692","format":"auto","element":".page-inner section","position":"bottom"},"codesnippet":{},"sitemap-general":{"prefix":"https://eiuapp.github.io/linux-handbook/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico"},"lightbox":{"jquery":true},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"eiuapp/linux-handbook","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"11f7d254cfa4e0ca44b175c66d379ecc"},"ga":{"configuration":"auto","token":"UA-93485976-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","author":"eiuapp","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Linux Handbook - Linux 实践指南 by eiuapp","language":"zh-hans","links":{"sidebar":{"Linux Handbook":"https://eiuapp.github.io/linux-handbook"}},"gitbook":"*","description":"Linux Handbook - Linux 实践指南 2019年 by eiuapp "},"file":{"path":"post/ssh-command-env-not-found-command.md","mtime":"2019-09-06T05:46:26.143Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-06T05:47:19.807Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lightbox/jquery.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lightbox/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-adsense/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
